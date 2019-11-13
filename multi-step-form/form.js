@@ -41,8 +41,12 @@ document.getElementById("StepTwoNext").addEventListener("click", function(e) {
   let errorCountry = document.getElementById("country_error");
   let country = document.getElementById("country").value;
   if (regex(/[0-9]{3,}/, contact)) {
+    errorContact.classList.add("hide");
+    errorContact.classList.remove("display");
     if (regex(/[a-z]+/i, country)) {
       navigate(step2, step3);
+      errorCountry.classList.add("hide");
+      errorCountry.classList.remove("display");
     } else {
       errorCountry.classList.add("display");
       errorCountry.classList.remove("hide");
@@ -67,8 +71,12 @@ document
     let errorMessage = document.getElementById("message_error");
     let message = document.getElementById("message").value;
     if (regex(/[a-z0-9]+/i, program)) {
+      errorProgram.classList.add("hide");
+      errorProgram.classList.remove("display");
       if (regex(/[a-z0-9]{3,}/i, message)) {
         navigate(step3, step4);
+        errorMessage.classList.add("hide");
+        errorMessage.classList.remove("display");
       } else {
         errorMessage.classList.add("display");
         errorMessage.classList.remove("hide");
@@ -86,7 +94,6 @@ function navigate(previous, next) {
   next.classList.remove("hide");
   next.classList.add("display");
 }
-// Validate regex
 function regex(reg, text) {
   return reg.test(text);
 }
